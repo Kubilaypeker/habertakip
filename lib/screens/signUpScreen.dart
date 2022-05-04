@@ -99,6 +99,7 @@ class signUpScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
           child: const TextField(
+            style: TextStyle(color: Colors.white),
             obscureText: false,
             decoration: InputDecoration(
               labelText: "Örnek",
