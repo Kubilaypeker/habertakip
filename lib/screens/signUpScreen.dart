@@ -126,6 +126,7 @@ class signUpScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, top: 0),
           child:   const TextField(
             obscureText: false,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: "Örnek@gmail.com",
               labelStyle: TextStyle(
