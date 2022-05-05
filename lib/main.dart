@@ -9,7 +9,7 @@ void main() {
 class HaberApp extends StatelessWidget {
   const HaberApp({Key? key}) : super(key: key);
   void myFunc() {
-    print("Hello World"); // kubi kafanı sikm
+    print("Hello World");
   }
 
   @override
