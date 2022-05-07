@@ -1,4 +1,5 @@
 import 'package:deneme2/screens/CategoryScreen.dart';
+import 'package:deneme2/screens/loginScreen.dart';
 import 'package:deneme2/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 

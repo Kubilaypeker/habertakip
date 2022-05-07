@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/habertakipapp.iml" filepath="$PROJECT_DIR$/.idea/habertakipapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/habertakipapp_android.iml" filepath="$PROJECT_DIR$/android/habertakipapp_android.iml" />
     </modules>
   </component>
 </project>

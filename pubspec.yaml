@@ -113,3 +113,7 @@ flutter:
     - assets/svgfiles/sports.svg
     - assets/svgfiles/magazine.svg
     - assets/svgfiles/EarthSvg.svg
+    - assets/svgfiles/tech.svg
+    - assets/svgfiles/categoryIconSvg.svg
+    - assets/svgfiles/newsSvg.svg
+    - assets/svgfiles/profileSvg.svg
