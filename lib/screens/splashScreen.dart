@@ -23,6 +23,7 @@ class _SplashState extends State<SplashScreen> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     final Widget svgLogo = SvgPicture.asset('assets/svgfiles/HaberTakip_Logo.svg');
