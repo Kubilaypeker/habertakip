@@ -12,6 +12,7 @@ class BottomBar extends StatelessWidget {
   final Widget newsIconSvg = SvgPicture.asset("assets/svgfiles/newsSvg.svg");
   final Widget categoryIconSvg = SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
 
+
     return SizedBox(
   height: 80,
   child: BottomNavigationBar(
