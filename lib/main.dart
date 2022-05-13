@@ -2,6 +2,7 @@ import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:deneme2/screens/loginScreen.dart';
 import 'package:deneme2/screens/signUpScreen.dart';
 import 'package:deneme2/screens/news_screen/news_screen.dart';
+import 'package:deneme2/screens/splashScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class HaberApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xff1E1E1E)
           ),
-      home: NewsScreen(),
+      home: SplashScreen(),
     );
   }
 }
