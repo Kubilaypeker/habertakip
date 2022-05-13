@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:deneme2/Widgets/BottomBar.dart';
 
 class CategoryScreen extends StatelessWidget {
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
@@ -11,11 +12,9 @@ class CategoryScreen extends StatelessWidget {
   final Widget sportsSvg = SvgPicture.asset("assets/svgfiles/sports.svg");
   final Widget earthSvg = SvgPicture.asset("assets/svgfiles/EarthSvg.svg");
   final Widget techSvg = SvgPicture.asset("assets/svgfiles/tech.svg");
-  final Widget profileIconSvg =
-      SvgPicture.asset("assets/svgfiles/profileSvg.svg");
+  final Widget profileIconSvg = SvgPicture.asset("assets/svgfiles/profileSvg.svg");
   final Widget newsIconSvg = SvgPicture.asset("assets/svgfiles/newsSvg.svg");
-  final Widget categoryIconSvg =
-      SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
+  final Widget categoryIconSvg = SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
 
   void myFunc() {
     print("Hello World");
@@ -244,32 +243,7 @@ class CategoryScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: BottomNavigationBar(
-            backgroundColor: const Color(0xff1E1E1E),
-            selectedItemColor: const Color(0xffFF4242),
-            items: [
-              BottomNavigationBarItem(
-                icon: Container(
-                  child: categoryIconSvg,
-                ),
-                label: "",
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  child: newsIconSvg,
-                ),
-                label: "",
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  child: profileIconSvg,
-                ),
-                label: "",
-              ),
-            ]),
-      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
