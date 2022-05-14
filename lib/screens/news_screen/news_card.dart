@@ -16,12 +16,12 @@ class NewsCard extends StatelessWidget {
           height: 90,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: true
-                ? NetworkImage('https://picsum.photos/400')
-                : AssetImage('assets/images/noImageAvailable.png')
-                    as ImageProvider,
-            alignment: Alignment.centerLeft,
-          )),
+                image: true
+                    ? NetworkImage('https://picsum.photos/400')
+                    : AssetImage('assets/images/noImageAvailable.png')
+                as ImageProvider,
+                alignment: Alignment.centerLeft,
+              )),
           child: Container(
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.all(12),
