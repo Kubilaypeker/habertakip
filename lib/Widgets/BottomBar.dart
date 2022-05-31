@@ -1,3 +1,5 @@
+import 'package:deneme2/screens/CategoryScreen.dart';
+import 'package:deneme2/screens/ProfileScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,7 +23,14 @@ class BottomBar extends StatelessWidget {
   items: [
   BottomNavigationBarItem(
   icon: Container(
-  child: categoryIconSvg,
+  child: IconButton(icon: categoryIconSvg,
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CategoryScreen()),
+    );
+  },
+  ),//categoryIconSvg,
   ),
   label: "",
   ),
@@ -33,7 +42,13 @@ class BottomBar extends StatelessWidget {
   ),
   BottomNavigationBarItem(
   icon: Container(
-  child: profileIconSvg,
+  child: IconButton( icon: profileIconSvg,
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProfileScreen()),
+    );
+  },),
   ),
   label: "",
   ),

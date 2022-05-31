@@ -1,3 +1,4 @@
+import 'package:deneme2/screens/loginScreen.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -12,6 +13,12 @@ class signUpScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    var padding = MediaQuery.of(context).viewPadding;
+    double height1 = height - padding.top - padding.bottom;
+    double height2 = height - padding.top;
+    double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
     final Widget svgLogo = SvgPicture.asset('assets/svgfiles/HaberTakip_Logo.svg');
     final Widget googleSvg = SvgPicture.asset("assets/svgfiles/Google.svg");
     final Widget facebookSvg = SvgPicture.asset("assets/svgfiles/Facebook.svg");
@@ -23,7 +30,7 @@ class signUpScreen extends StatelessWidget {
           ),
       home: Scaffold(
           appBar: AppBar(
-            toolbarHeight: 90,
+            toolbarHeight: safeAreaHeight/8,
             backgroundColor: const Color.fromRGBO(30, 30, 30, 0),
             centerTitle: true,
             
@@ -48,12 +55,17 @@ class signUpScreen extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: SizedBox(
-                    height: 70,
+                    height: safeAreaHeight/9,
                     child: TextButton(
                     child: const Text("GİRİŞ YAP",
                     style: TextStyle(fontFamily: 'Allerta', fontSize: 16),
                     ),
-                    onPressed: myFunc, 
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => loginScreen()),
+                        );
+                      },
                     style: TextButton.styleFrom(
                       primary: const Color.fromARGB(64, 255, 255, 255),
                       textStyle: const TextStyle(fontFamily: 'Allerta', fontSize: 20),
@@ -63,7 +75,7 @@ class signUpScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: SizedBox(
-                    height: 70,
+                    height: safeAreaHeight/9,
                     child: TextButton(
                     child: const Text("KAYIT OL",
                     style: TextStyle(
@@ -86,7 +98,7 @@ class signUpScreen extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(left: 20, top: 8),
+          padding: EdgeInsets.only(left: 20, top: safeAreaHeight/25),
           child: const Text(
             "Kullanıcı Adınız",
             style: TextStyle(
@@ -193,8 +205,8 @@ class signUpScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20),
           alignment: Alignment.center,
           child: SizedBox(
-            height: 56,
-            width: 290,
+            height: safeAreaHeight/11,
+            width: 3*width/4,
 
             child: TextButton(
             
@@ -214,7 +226,7 @@ class signUpScreen extends StatelessWidget {
         ),
         
         Container( 
-          padding: EdgeInsets.only(top: 4),
+          padding: EdgeInsets.only(top: safeAreaHeight/30),
           alignment: Alignment.center,
           child: const Text("SOSYAL MEDYA İLE GİRİŞ YAP",
             style: TextStyle(

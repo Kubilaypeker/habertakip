@@ -1,3 +1,6 @@
+import 'package:deneme2/Widgets/CategoryWidget.dart';
+import 'package:deneme2/screens/ProfileScreen.dart';
+import 'package:deneme2/screens/news_screen/news_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -48,10 +51,6 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 50,
         backgroundColor: const Color(0xff1E1E1E),
-        leading: IconButton(
-          icon: arrowBackSvg,
-          onPressed: myFunc,
-        ),
         title: const Text(
           "Kategoriler",
           style: TextStyle(
@@ -104,7 +103,7 @@ class CategoryScreen extends StatelessWidget {
            alignment: Alignment.bottomLeft,
 
 
-           child: const TextButton(
+           child: TextButton(
                child: Text("GÜNDEMDEKİLER",
              style: TextStyle(
                color: Colors.white,
@@ -112,7 +111,16 @@ class CategoryScreen extends StatelessWidget {
                fontSize: 18,
              ),
            ),
-           onPressed: null ),
+           onPressed: () {
+             Navigator.push(
+               context,
+               MaterialPageRoute(builder: (context) => NewsScreen(
+                 categoryName: "GÜNDEMDEKİLER",
+               )
+               ),
+             );
+           }
+           ),
          ),
           ],
           ),
@@ -120,263 +128,48 @@ class CategoryScreen extends StatelessWidget {
           Wrap(
             spacing: 10,
             children: <Widget>[
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
-
-
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://www.webtekno.com/images/editor/default/0002/21/fe3221973f430377849d6f74a0cc897e4fc5fde7.jpeg", fit: BoxFit.cover,),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9]
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width/2)-10,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("TEKNOLOJİ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null),
-                  ),
-                ],
+              CategoryWidget(
+                categoryName: "TEKNOLOJİ",
+                categorySvgUrl: "https://www.independentturkish.com/sites/default/files/styles/1368x911/public/article/main_image/2022/02/15/866341-1518543616.jpg?itok=fi-TbFeQ",
+                function: myFunc,
               ),
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
-
-
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://i.pinimg.com/originals/58/4c/16/584c16ceef11c635e42849598b423674.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width-10)/2,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("SPOR",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null),
-                  ),
-                ],
+              CategoryWidget(
+                categoryName: "SPOR",
+                categorySvgUrl: "https://i.pinimg.com/originals/58/4c/16/584c16ceef11c635e42849598b423674.jpg",
+                function: myFunc,
+              )
+            ],
+          ),
+          Wrap(
+            spacing: 10,
+            children: <Widget>[
+              CategoryWidget(
+                categoryName: "POLİTİKA",
+                categorySvgUrl: "https://cdnuploads.aa.com.tr/uploads/Contents/2019/10/06/thumbs_b_c_621ba3bd2059bdfce3e3b5776de85bcb.jpg",
+                function: myFunc,
+              ),
+              CategoryWidget(
+                categoryName: "SAĞLIK",
+                categorySvgUrl: "https://cdnuploads.aa.com.tr/uploads/Contents/2020/03/11/thumbs_b_c_7588639e01803faa29b4961cdde7409d.jpg",
+                function: myFunc,
               ),
             ],
           ),
           Wrap(
             spacing: 10,
             children: <Widget>[
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
-
-
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://cdn.iha.com.tr/Contents/store/img/834000/835925.jpg", fit: BoxFit.cover,),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width/2)-10,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("POLİTİKA",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null),
-                  ),
-                ],
+              CategoryWidget(
+                categoryName: "DÜNYA",
+                categorySvgUrl: "https://www.theparliamentmagazine.eu/siteimg/share/ugc-1/fullnews/news/22595/21857_original.jpg",
+                function: myFunc,
               ),
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
-
-
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://www.cumhuriyet.com.tr/Archive/2022/5/16/1936469/kapak_122658.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width-10)/2,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("SAĞLIK",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null),
-                  ),
-                ],
+              CategoryWidget(
+                categoryName: "MAGAZİN",
+                categorySvgUrl: "https://i.haberglobal.com.tr/rcman/Cw800h450q95gm/storage/files/images/2022/03/09/gulsen-yine-olay-yaratti-lolipoplu-sarki-kapagiyla-gundem-oldu-zHG6.png",
+                function: myFunc,
               ),
-            ],
-          ),
-          Wrap(
-            spacing: 10,
-            children: <Widget>[
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
 
 
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://www.cumhuriyet.com.tr/Archive/2022/5/16/1936670/kapak_234409.jpg", fit: BoxFit.cover,),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width-10)/2,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("DÜNYA",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null),
-                  ),
-                ],
-              ),
-              Stack(
-                children:[
-                  Container(
-                    padding: const EdgeInsets.only(top: 8),
-
-
-                    width: (width-10)/2,
-                    height: (3*safeAreaHeight/4)/2,
-                    child: Image.network("https://iasbh.tmgrup.com.tr/956d80/0/0/0/0/0/0?u=https://isbh.tmgrup.com.tr/sb/album/2022/01/07/1641556856482.jpg&mw=600&l=1",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    height: 3*safeAreaHeight/8,
-                    width: (width-10)/2,
-                    padding: const EdgeInsets.only(left:8),
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0, 0, 0, 0.9],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: (3*safeAreaHeight/4)/2,
-                    width: (width-10)/2,
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.only(left: 8, top: 10),
-                    child: const TextButton(
-                        child: Text("MAGAZİN",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                            fontSize: 18,
-                          ),
-                        ),
-                        onPressed: null
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
 

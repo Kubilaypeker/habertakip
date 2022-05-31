@@ -2,56 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:io';
 
+import '../screens/news_screen/news_screen.dart';
 
 
 class CategoryWidget extends StatelessWidget {
+  var categorySvgUrl, function, categoryName;
+  CategoryWidget({this.categorySvgUrl, this.function, this.categoryName});
 
   @override
   Widget build(BuildContext context) {
-    // Full screen width and height
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-// Height (without SafeArea)
     var padding = MediaQuery.of(context).viewPadding;
     double height1 = height - padding.top - padding.bottom;
-
-// Height (without status bar)
     double height2 = height - padding.top;
-
-// Height (without status and toolbar)
     double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
-
 
     return Container(
       child: Stack(
-        children: <Widget>[
+        children:[
           Container(
-            margin: const EdgeInsets.only(
-                left: 4.0, top: 10.0, bottom: 5.0),
-            height: (safeAreaHeight-50)/6,
-            width: width,
-            decoration: BoxDecoration(
-              color: const Color(0xffFF4242),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: IconButton(
-              icon: earthSvg,
-              onPressed: myFunc,
+            padding: const EdgeInsets.only(top: 8),
+            width: (width-10)/2,
+            height: (3*safeAreaHeight/4)/2,
+            child: Image.network(categorySvgUrl, fit: BoxFit.cover,),
+          ),
+          Container(
+            height: 3*safeAreaHeight/8,
+            width: (width-10)/2,
+            padding: const EdgeInsets.only(left:8),
+            foregroundDecoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.black, Colors.transparent, Colors.transparent, Colors.black],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0, 0, 0, 0.9]
+              ),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 80),
-            child: const Text(
-              "DÜNYA",
-              style: TextStyle(
-                fontSize: 40,
-                fontFamily: "Allerta",
-                color: Colors.white,
-
-              ),
-            ),
-            alignment: Alignment.center,
+            height: (3*safeAreaHeight/4)/2,
+            width: (width/2)-10,
+            alignment: Alignment.bottomLeft,
+            padding: const EdgeInsets.only(left: 8, top: 10),
+            child: TextButton(
+                child: Text(categoryName,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Allerta",
+                    fontSize: 18,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewsScreen(
+                      categoryName: categoryName,
+                    )
+                    ),
+                  );
+                }),
           ),
         ],
       ),

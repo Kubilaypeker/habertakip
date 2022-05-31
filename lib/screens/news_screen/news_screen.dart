@@ -3,9 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/screens/news_screen/news_card.dart';
 
 class NewsScreen extends StatelessWidget {
+  var categoryName;
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
   final Widget settingsSvg = SvgPicture.asset("assets/svgfiles/settings.svg");
 
+  NewsScreen(
+      {this.categoryName}
+      );
   void myFunc() {
     print("Hello World");
   }
@@ -20,8 +24,8 @@ class NewsScreen extends StatelessWidget {
           icon: arrowBackSvg,
           onPressed: myFunc,
         ),
-        title: const Text(
-          "Current Category",
+        title: Text(
+          categoryName,
           style: TextStyle(
             color: Colors.white,
             fontFamily: "Allerta",
