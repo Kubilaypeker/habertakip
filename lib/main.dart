@@ -15,7 +15,6 @@ void main() {
   runApp(const HaberApp());
 }
 
-
 //  Language: dart commit
 class HaberApp extends StatelessWidget {
   const HaberApp({Key? key}) : super(key: key);

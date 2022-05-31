@@ -125,3 +125,5 @@ flutter:
     - assets/svgfiles/categoryIconSvg.svg
     - assets/svgfiles/newsSvg.svg
     - assets/svgfiles/profileSvg.svg
+    - assets/svgfiles/Send.svg
+    - assets/svgfiles/Bookmark.svg
