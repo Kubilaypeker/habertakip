@@ -1,8 +1,12 @@
+import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/screens/news_screen/news_card.dart';
 
+
 class NewsScreen extends StatelessWidget {
+
+
   var categoryName;
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
   final Widget settingsSvg = SvgPicture.asset("assets/svgfiles/settings.svg");
@@ -16,13 +20,19 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 50,
         backgroundColor: const Color(0xff1E1E1E),
         leading: IconButton(
           icon: arrowBackSvg,
-          onPressed: myFunc,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CategoryScreen()),
+              );
+            }
         ),
         title: Text(
           categoryName,
@@ -42,12 +52,12 @@ class NewsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          NewsCard(),
-          NewsCard(),
-          NewsCard(),
-          NewsCard(),
-          NewsCard(),
-          NewsCard(),
+          NewsCard(categoryName: categoryName,),
+          NewsCard(categoryName: categoryName,),
+          NewsCard(categoryName: categoryName,),
+          NewsCard(categoryName: categoryName,),
+          NewsCard(categoryName: categoryName,),
+          NewsCard(categoryName: categoryName,),
 
         ],
       ),

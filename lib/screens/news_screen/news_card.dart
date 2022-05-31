@@ -1,19 +1,38 @@
+import 'package:deneme2/screens/news_reading_screen/newsReadingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NewsCard extends StatelessWidget {
+  var categoryName;
+  NewsCard(
+      {this.categoryName}
+      );
+
   @override
   Widget build(BuildContext context) {
-    return Card(
+
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    var padding = MediaQuery.of(context).viewPadding;
+    double height1 = height - padding.top - padding.bottom;
+    double height2 = height - padding.top;
+    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
+    int safeAreaHeightInt = safeAreaHeight.toInt();
+
+
+
+    return IconButton(
+      iconSize: safeAreaHeight/5,
+      icon: Card(
       elevation: 6,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       color: const Color(0xff4A4848),
-      margin: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(bottom: 0),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Container(
-          width: double.infinity,
-          height: 90,
+          width: width,
+          height: safeAreaHeight/6,
           decoration: const BoxDecoration(
               image: DecorationImage(
                 image: true
@@ -24,7 +43,7 @@ class NewsCard extends StatelessWidget {
               )),
           child: Container(
               alignment: Alignment.centerRight,
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.only(bottom: 0),
               child: ListView(
                 children: <Widget>[
                   Container(
@@ -56,6 +75,22 @@ class NewsCard extends StatelessWidget {
               )),
         ),
       ),
+    ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewsReadingScreen(
+              newsTitle: "Pompacı mutlu",
+              newsImage: "blob:https://web.whatsapp.com/ec65217b-d1d1-450a-a3ac-3df07752a900",
+              categoryName: categoryName,
+              newsContent: "afasfa",
+              newsSource: "HaberTürk",
+
+
+            )
+            ),
+          );
+        },
     );
   }
 }
