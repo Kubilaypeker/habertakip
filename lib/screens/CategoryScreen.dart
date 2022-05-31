@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:deneme2/Widgets/CategoryWidget.dart';
-import 'package:deneme2/screens/ProfileScreen.dart';
-import 'package:deneme2/screens/news_screen/news_screen.dart';
+import 'package:deneme2/core/helpers/requestHelpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,15 +21,14 @@ class CategoryScreen extends StatelessWidget {
   final Widget newsIconSvg = SvgPicture.asset("assets/svgfiles/newsSvg.svg");
   final Widget categoryIconSvg = SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
 
-  void myFunc() {
-    print("Hello World");
-  }
 
+  void myFunc() {
+print("my func");
+  }
 
 
   @override
   Widget build(BuildContext context) {
-
     // Full screen width and height
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -111,15 +111,7 @@ class CategoryScreen extends StatelessWidget {
                fontSize: 18,
              ),
            ),
-           onPressed: () {
-             Navigator.push(
-               context,
-               MaterialPageRoute(builder: (context) => NewsScreen(
-                 categoryName: "GÜNDEMDEKİLER",
-               )
-               ),
-             );
-           }
+           onPressed: myFunc
            ),
          ),
           ],
