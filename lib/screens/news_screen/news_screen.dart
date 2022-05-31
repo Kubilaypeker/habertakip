@@ -2,12 +2,16 @@ import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/screens/news_screen/news_card.dart';
+import 'package:deneme2/core/coreHelper.dart';
+import '../../core/helpers/requestHelpers.dart';
+
 
 
 class NewsScreen extends StatelessWidget {
 
 
   var categoryName;
+  late Future<NewsJson> newsJson;
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
   final Widget settingsSvg = SvgPicture.asset("assets/svgfiles/settings.svg");
 
@@ -18,6 +22,9 @@ class NewsScreen extends StatelessWidget {
     print("Hello World");
   }
 
+  void initState() {
+    newsJson = fetchJson(this.categoryName);
+  }
   @override
   Widget build(BuildContext context) {
 
