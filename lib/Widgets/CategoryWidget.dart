@@ -6,8 +6,8 @@ import '../screens/news_screen/news_screen.dart';
 
 
 class CategoryWidget extends StatelessWidget {
-  var categorySvgUrl, function, categoryName;
-  CategoryWidget({this.categorySvgUrl, this.function, this.categoryName});
+  var categorySvgUrl,  categoryName, categoryApiKeyWord, keyword;
+  CategoryWidget({this.categorySvgUrl,  this.categoryName, this.categoryApiKeyWord, this.keyword});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,8 @@ class CategoryWidget extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: "Allerta",
-                    fontSize: 18,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 onPressed: () {
@@ -59,10 +60,12 @@ class CategoryWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => NewsScreen(
                       categoryName: categoryName,
+                      categoryUrlKeyWord: categoryApiKeyWord,
                     )
                     ),
                   );
-                }),
+                },
+            ),
           ),
         ],
       ),

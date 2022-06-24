@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/Widgets/BottomBar.dart';
 
+import 'news_screen/news_screen.dart';
+
 
 class CategoryScreen extends StatelessWidget {
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
@@ -47,16 +49,17 @@ print("my func");
 
 
     return Scaffold(
-
+      backgroundColor: Color(0xff1E1E1E),
       appBar: AppBar(
         toolbarHeight: 50,
-        backgroundColor: const Color(0xff1E1E1E),
+        backgroundColor: const Color(0xFFFF4242),
         title: const Text(
           "Kategoriler",
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontFamily: "Allerta",
-            fontSize: 20,
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
@@ -70,19 +73,14 @@ print("my func");
       body: Container(
         color: Colors.black26,
         child:ListView(
-
         children: <Widget>[
           Stack(
             children:[
           Container(
             padding: EdgeInsets.zero,
-
-
-
           width: width,
           height: safeAreaHeight/3,
           child: Image.network("https://static.dw.com/image/59527518_101.jpeg", fit: BoxFit.cover,),
-
       ),
             Container(
               height: safeAreaHeight/3,
@@ -101,34 +99,41 @@ print("my func");
               height: safeAreaHeight/3,
               width: width,
            alignment: Alignment.bottomLeft,
-
-
            child: TextButton(
                child: Text("GÜNDEMDEKİLER",
              style: TextStyle(
                color: Colors.white,
                fontFamily: "Allerta",
-               fontSize: 18,
+               fontSize: 15,
+               fontWeight: FontWeight.bold,
              ),
            ),
-           onPressed: myFunc
+           onPressed: () {
+             Navigator.push(
+               context,
+               MaterialPageRoute(builder: (context) => NewsScreen(
+                 categoryName: "GÜNDEMDEKİLER",
+                 categoryUrlKeyWord: "breakingNews",
+               )
+               ),
+             );
+           },
            ),
          ),
           ],
           ),
-
           Wrap(
             spacing: 10,
             children: <Widget>[
               CategoryWidget(
+                categoryApiKeyWord: "technology",
                 categoryName: "TEKNOLOJİ",
                 categorySvgUrl: "https://www.independentturkish.com/sites/default/files/styles/1368x911/public/article/main_image/2022/02/15/866341-1518543616.jpg?itok=fi-TbFeQ",
-                function: myFunc,
               ),
               CategoryWidget(
+                categoryApiKeyWord: "sport",
                 categoryName: "SPOR",
                 categorySvgUrl: "https://i.pinimg.com/originals/58/4c/16/584c16ceef11c635e42849598b423674.jpg",
-                function: myFunc,
               )
             ],
           ),
@@ -136,36 +141,17 @@ print("my func");
             spacing: 10,
             children: <Widget>[
               CategoryWidget(
-                categoryName: "POLİTİKA",
-                categorySvgUrl: "https://cdnuploads.aa.com.tr/uploads/Contents/2019/10/06/thumbs_b_c_621ba3bd2059bdfce3e3b5776de85bcb.jpg",
-                function: myFunc,
-              ),
-              CategoryWidget(
-                categoryName: "SAĞLIK",
-                categorySvgUrl: "https://cdnuploads.aa.com.tr/uploads/Contents/2020/03/11/thumbs_b_c_7588639e01803faa29b4961cdde7409d.jpg",
-                function: myFunc,
-              ),
-            ],
-          ),
-          Wrap(
-            spacing: 10,
-            children: <Widget>[
-              CategoryWidget(
-                categoryName: "DÜNYA",
+                categoryApiKeyWord: "lifestyle",
+                categoryName: "YAŞAM",
                 categorySvgUrl: "https://www.theparliamentmagazine.eu/siteimg/share/ugc-1/fullnews/news/22595/21857_original.jpg",
-                function: myFunc,
               ),
               CategoryWidget(
-                categoryName: "MAGAZİN",
-                categorySvgUrl: "https://i.haberglobal.com.tr/rcman/Cw800h450q95gm/storage/files/images/2022/03/09/gulsen-yine-olay-yaratti-lolipoplu-sarki-kapagiyla-gundem-oldu-zHG6.png",
-                function: myFunc,
+                categoryApiKeyWord: "finance",
+                categoryName: "BORSA",
+                categorySvgUrl: "https://i.cnnturk.com/i/cnnturk/75/740x416/6285dea1214ed8209039547f.jpg",
               ),
-
-
             ],
           ),
-
-
         ],
       ),
     ),

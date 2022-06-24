@@ -1,19 +1,30 @@
 
+import 'package:deneme2/authenticationService.dart';
 import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:deneme2/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 
-class loginScreen extends StatelessWidget {
+class loginScreen extends StatefulWidget {
   const loginScreen({Key? key}) : super(key: key);
-  void myFunc() {
-    print("Hello World");
-  }
+
+  @override
+  _loginScreenState createState() => new _loginScreenState();
+}
+
+  class _loginScreenState extends State<loginScreen> {
+
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
+    void myFunc() {
+      print("Hello World");
+    }
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var padding = MediaQuery.of(context).viewPadding;
@@ -26,6 +37,8 @@ class loginScreen extends StatelessWidget {
     final Widget facebookSvg = SvgPicture.asset("assets/svgfiles/Facebook.svg");
     final Widget twitterSvg = SvgPicture.asset("assets/svgfiles/Twitter.svg");
 
+
+
     return MaterialApp(
       theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xff1E1E1E)
@@ -35,22 +48,18 @@ class loginScreen extends StatelessWidget {
             toolbarHeight: safeAreaHeight/8,
             backgroundColor: const Color.fromRGBO(30, 30, 30, 0),
             centerTitle: true,
-            
-              
                 title: IconButton(
                 icon: svgLogo,
                 iconSize: 100,
                 onPressed: null,
               )
-            
           ),
-          body: ListView( children: <Widget>[Container( 
+          body: ListView( children: <Widget>[Container(
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(22),
                   topRight: Radius.circular(22),
-
                 ),
                 color: Color(0xFFFF4242)),
             child: Row(
@@ -62,7 +71,7 @@ class loginScreen extends StatelessWidget {
                     child: const Text("GİRİŞ YAP",
                     style: TextStyle(fontFamily: 'Allerta', fontSize: 16),
                     ),
-                    onPressed: myFunc, 
+                    onPressed: myFunc,
                     style: TextButton.styleFrom(
                       primary: const Color.fromARGB(255, 255, 255, 255),
                       textStyle: const TextStyle(fontFamily: 'Allerta', fontSize: 20),
@@ -93,10 +102,8 @@ class loginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-                
             ],
           ),
-          
         ),
         Container(
           alignment: Alignment.topLeft,
@@ -136,11 +143,11 @@ class loginScreen extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child: const TextField(
+          child:  TextFormField(
+            style: TextStyle(color: Colors.white),
+            controller: email,
             obscureText: false,
             decoration: InputDecoration(
-              
-              
               labelText: "example@gmail.com",
               labelStyle: TextStyle(
                 color: Color(0xffA1A2A4),
@@ -163,7 +170,8 @@ class loginScreen extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child: const TextField(
+          child: TextFormField(
+            controller: password,
             style: TextStyle(color: Colors.white),
             obscureText: true,
             decoration: InputDecoration(
@@ -175,25 +183,24 @@ class loginScreen extends StatelessWidget {
             ),
           ),
         ),
-        Container( 
+        Container(
           padding: EdgeInsets.only(top: safeAreaHeight/25),
           alignment: Alignment.center,
           child: SizedBox(
             height: safeAreaHeight/11,
             width: 3*width/4,
-
             child: TextButton(
-            
             child: const Text("Giriş Yap",
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Allerta',
               fontSize: 16,
-            ),),
+            ),
+            ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CategoryScreen()),
+              context.read<AuthenticationService>().signIn(
+                email: email.text,
+                password: password.text,
               );
             },
             style: TextButton.styleFrom(
@@ -203,14 +210,12 @@ class loginScreen extends StatelessWidget {
           ),
         ),
         ),
-        Container( 
+        Container(
           alignment: Alignment.center,
           child: SizedBox(
             height: safeAreaHeight/12,
             width: width/3,
-
             child: TextButton(
-            
             child: const Text("Şifremi Unuttum",
             style: TextStyle(
               color: Color(0xFFFF4242),
@@ -219,29 +224,24 @@ class loginScreen extends StatelessWidget {
             ),),
             onPressed: myFunc,
             style: TextButton.styleFrom(
-                      
                       primary: const Color.fromARGB(255, 255, 255, 255),
                       textStyle: const TextStyle(fontFamily: 'Allerta',),),
           ),
         ),
         ),
-        Container( 
+        Container(
           alignment: Alignment.center,
           child: const Text("SOSYAL MEDYA İLE GİRİŞ YAP",
             style: TextStyle(
               color: Color(0xFFFF4242),
               fontFamily: 'Allerta',
               fontSize: 10,
-              
             ),
             ),
-            
-          
-        
         ),
         Container(
           alignment: Alignment.center,
-            child: Wrap(              
+            child: Wrap(
               spacing: 15,
             children: <Widget>[
             Expanded(
@@ -272,5 +272,5 @@ class loginScreen extends StatelessWidget {
           ),
       ),
     );
-  }
-}
+}  }
+

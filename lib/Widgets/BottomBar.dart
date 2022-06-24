@@ -16,7 +16,7 @@ class BottomBar extends StatelessWidget {
 
 
     return SizedBox(
-  height: 80,
+  height: 70,
   child: BottomNavigationBar(
   backgroundColor: const Color(0xff1E1E1E),
   selectedItemColor: const Color(0xffFF4242),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611951286348",
+    "project_id": "habertakipapp",
+    "storage_bucket": "habertakipapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611951286348:android:0299c84a553fb39a0dfce9",
+        "android_client_info": {
+          "package_name": "com.example.habertakipapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611951286348-bei9v1fsul0e7hckb0ns4mqustogh265.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKpgz1gnqg4JXF3gs_KbPDNQ7Ml9QmLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611951286348-bei9v1fsul0e7hckb0ns4mqustogh265.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
