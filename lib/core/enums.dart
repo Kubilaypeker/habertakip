@@ -3,6 +3,6 @@ enum CategoryEnum {
   sport,
   technology,
   politic,
-  bussines,
+  business,
   all
 }

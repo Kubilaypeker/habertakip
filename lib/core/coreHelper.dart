@@ -9,32 +9,32 @@ CategoryEnum detectCategory(String category) {
   var categoryEnum;
   if (category == 'gündem') {
     categoryEnum = CategoryEnum.general;
-  } else if (category == 'spor') {
+  } else if (category == 'SPOR') {
     categoryEnum = CategoryEnum.sport;
-  } else if (category == 'teknoloji') {
+  } else if (category == 'TEKNOLOJİ') {
     categoryEnum = CategoryEnum.technology;
   } else if (category == 'politika') {
     categoryEnum = CategoryEnum.politic;
   } else if (category == 'is_dünyasi') {
-    categoryEnum = CategoryEnum.bussines;
+    categoryEnum = CategoryEnum.business;
   } else {
     categoryEnum = CategoryEnum.all;
   }
   return categoryEnum;
 }
 
-String getApiUrl(String category) {
+String getApiUrl(String categoryEnum) {
   String url = sprintf(
       "https://newsapi.org/v2/top-headlines?country=tr&category=%s&apiKey=445cb388840d47af8a94a665f03d546b",
-      [category]);
+      [categoryEnum]);
   return url;
 }
 
-Future<NewsJson> fetchJson(String category) async {
-  final response = await http.get(Uri.parse(getApiUrl(category)));
+Future<NewsJson> fetchJson(String categoryEnum) async {
+  final response = await http.get(Uri.parse(getApiUrl(categoryEnum)));
 
   if (response.statusCode == 200) {
-    return NewsJson.fromJson(jsonDecode(response.body));
+    return NewsJson.fromJson(jsonDecode(response.body)['articles']);
   } else {
     throw Exception('Failed to load data');
   }

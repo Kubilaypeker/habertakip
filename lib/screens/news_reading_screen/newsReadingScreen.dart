@@ -1,3 +1,4 @@
+import 'package:deneme2/htmlParser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +22,7 @@ class NewsReadingScreen extends StatelessWidget {
       SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
 
 NewsReadingScreen(
-  {this.newsImage,this.newsTitle,this.newsContent, this.categoryName, this.newsSource}
+  {this.newsImage,this.newsTitle,this.newsContent, this.newsSource}
     );
 
   void myFunc() {
@@ -39,18 +40,11 @@ NewsReadingScreen(
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 50,
-        backgroundColor: const Color(0xff1E1E1E),
+        backgroundColor: const Color(0xFFFF4242),
         leading: IconButton(
           icon: arrowBackSvg,
+          color: Colors.white,
           onPressed: myFunc,
-        ),
-        title: Text(
-          categoryName,
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Allerta",
-            fontSize: 20,
-          ),
         ),
         actions: [
           IconButton(
@@ -62,90 +56,44 @@ NewsReadingScreen(
       ),
       body: ListView(
         children: <Widget>[
-          Card(
-              elevation: 6,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              color: const Color(0xff1E1E1E),
-              margin: const EdgeInsets.all(12),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(65.0, 10.0, 0.0, 0.0),
-                  child: Wrap(
-                    spacing: 15,
-                    children:  <Widget>[
-                       Padding(
-                        padding: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 10.0),
-                        child: Text(
-                          newsSource,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontFamily: "Allerta",
-                          ),
-                        ),
-                      ),
-                      IconButton(onPressed: myFunc, icon: sendSvg,padding: EdgeInsets.only(left: 70.0,bottom: 50.0)),
-                      IconButton(onPressed: myFunc, icon: bookMarkSvg, padding: EdgeInsets.only(left: 0.0,bottom: 50.0))
-
-                    ],
-                  ),
-                  width: 10,
-                  height: 30,
-                  margin: const EdgeInsets.fromLTRB(2.0, 20.0, 0.0, 0.0),
-                  decoration:   BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(22),
-                    ),
-                      image: DecorationImage(
-                    image: true
-                        ? NetworkImage(
-                            newsImage)
-                        : AssetImage('assets/images/noImageAvailable.png')
-                            as ImageProvider,
-                    alignment: Alignment.centerLeft,
-                  )),
-                ),
-              )),
           Container(
-            margin: const EdgeInsets.all(20.0),
-            child:  Text(
-              newsTitle,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: "Allerta",
-                  color: Colors.white),
-            ),
-          ),
-          Container(
-            width: double.maxFinite,
-            height: safeAreaHeight/6,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(22),
-                  topRight: Radius.circular(22),
-                ),
-                image: DecorationImage(
-                    image: true
-                        ? NetworkImage('https://picsum.photos/500')
-                        : AssetImage('assets/images/noImageAvailable.png')
-                            as ImageProvider,
-                    fit: BoxFit.fill)),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 20, top: 24),
+            padding: EdgeInsets.only(top: 20,bottom: 10,left: 10,right: 10),
+            alignment: Alignment.center,
             child: Text(
-              newsContent,
+              newsTitle,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontFamily: 'Allerta',
+                fontWeight: FontWeight.bold,
+                fontFamily: "Allerta",
+                fontSize: 20,
+                color: Colors.white60,
               ),
             ),
           ),
+           ClipRRect(
+            child: Image.network(
+              newsImage,
+              fit: BoxFit.fill,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              "\t\t" + parseData(newsContent),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Allerta",
+                fontSize: 13,
+
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+
+
+
+
         ],
       ),
       bottomNavigationBar: BottomBar(),

@@ -1,7 +1,11 @@
 import 'package:deneme2/Widgets/animatedSubscribeButton.dart';
+import 'package:deneme2/main.dart';
+import 'package:deneme2/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/Widgets/BottomBar.dart';
+import 'package:deneme2/authenticationService.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -85,31 +89,26 @@ class ProfileScreen extends StatelessWidget {
               ),
 
           ),
-          Container(
-            child: AnimatedSubscribeButton(
-              animationDuration: const  Duration(milliseconds: 1000),
-              initialText: "Abone Ol",
-              finalText: "Abone Olundu",
-              iconData: Icons.check,
-              iconSize: 32,
-              buttonStyle: StyleOfButton(
-                primaryColor: Color(0xffF5232D),
-                secondaryColor: Colors.white,
-                elevation: 20,
-                initialTextStyle: TextStyle(
-                  fontFamily: "Allerta",
-                  fontSize: 20,
-                  color: Colors.white
-                ),
-                finalTextStyle: TextStyle(
-                  color: Color(0xffF5232D),
-                  fontFamily: "Allerta",
-                  fontSize: 20
-                ),
+          SizedBox(
+            width: 2*width/3,
+            height: safeAreaHeight/11,
 
+          child:Container(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            color: const Color(0xFFFF4242),
+            child: TextButton(
+              onPressed:
+              () {
+            context.read<AuthenticationService>().signOut();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AuthenticationWrapper(),
               ),
-            ),
-          ),
+            );
+          },
+              child: Text("Çıkış Yap")
+          ),)
+    )
         ],
       ),
       bottomNavigationBar: BottomBar(),
