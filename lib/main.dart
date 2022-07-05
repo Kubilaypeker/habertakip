@@ -1,8 +1,6 @@
 import 'package:deneme2/authenticationService.dart';
 import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:deneme2/screens/loginScreen.dart';
-import 'package:deneme2/screens/splashScreen.dart';
-import 'package:deneme2/screens/welcomeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

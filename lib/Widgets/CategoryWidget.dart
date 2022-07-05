@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:io';
-
 import '../screens/news_screen/news_screen.dart';
-
 
 class CategoryWidget extends StatelessWidget {
   var categorySvgUrl,  categoryName, categoryApiKeyWord, keyword;
@@ -15,9 +11,7 @@ class CategoryWidget extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var padding = MediaQuery.of(context).viewPadding;
-    double height1 = height - padding.top - padding.bottom;
-    double height2 = height - padding.top;
-    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
+    double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
 
     return Container(
       child: Stack(

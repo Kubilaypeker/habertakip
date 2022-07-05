@@ -1,6 +1,6 @@
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:deneme2/authenticationService.dart';
-import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:deneme2/screens/signUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +16,9 @@ class loginScreen extends StatefulWidget {
 
   class _loginScreenState extends State<loginScreen> {
 
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
     final TextEditingController email = TextEditingController();
     final TextEditingController password = TextEditingController();
 
@@ -25,19 +28,16 @@ class loginScreen extends StatefulWidget {
     void myFunc() {
       print("Hello World");
     }
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var padding = MediaQuery.of(context).viewPadding;
-    double height1 = height - padding.top - padding.bottom;
-    double height2 = height - padding.top;
     double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
 
     final Widget svgLogo = SvgPicture.asset('assets/svgfiles/HaberTakip_Logo.svg');
     final Widget googleSvg = SvgPicture.asset("assets/svgfiles/Google.svg");
     final Widget facebookSvg = SvgPicture.asset("assets/svgfiles/Facebook.svg");
     final Widget twitterSvg = SvgPicture.asset("assets/svgfiles/Twitter.svg");
-
-
 
     return MaterialApp(
       theme: ThemeData(
@@ -94,7 +94,7 @@ class loginScreen extends StatefulWidget {
                             context,
                             MaterialPageRoute(builder: (context) => signUpScreen()),
                           );
-                        },  // if we change this button to a functional button, then original color will be used - use myFunc for till we code backend functions
+                        },
                     style: TextButton.styleFrom(
                       primary: const Color.fromARGB(64, 255, 255, 255),
                       textStyle: const TextStyle(fontSize: 20),
@@ -247,7 +247,7 @@ class loginScreen extends StatefulWidget {
             Expanded(
               child: SizedBox(
                  child: IconButton(icon: googleSvg,
-                 onPressed: myFunc,
+                 onPressed: myFunc
                  ),
               ),
             ),

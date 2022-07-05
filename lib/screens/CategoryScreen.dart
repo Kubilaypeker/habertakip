@@ -1,52 +1,20 @@
-import 'dart:convert';
-
 import 'package:deneme2/Widgets/CategoryWidget.dart';
-import 'package:deneme2/core/helpers/requestHelpers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/Widgets/BottomBar.dart';
-
 import 'news_screen/news_screen.dart';
-
 
 class CategoryScreen extends StatelessWidget {
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
   final Widget settingsSvg = SvgPicture.asset("assets/svgfiles/settings.svg");
-  final Widget politicsSvg = SvgPicture.asset("assets/svgfiles/Vector.svg");
-  final Widget medicineSvg = SvgPicture.asset("assets/svgfiles/Medicine.svg");
-  final Widget magazineSvg = SvgPicture.asset("assets/svgfiles/magazine.svg");
-  final Widget sportsSvg = SvgPicture.asset("assets/svgfiles/sports.svg");
-  final Widget earthSvg = SvgPicture.asset("assets/svgfiles/EarthSvg.svg");
-  final Widget techSvg = SvgPicture.asset("assets/svgfiles/tech.svg");
-  final Widget profileIconSvg = SvgPicture.asset("assets/svgfiles/profileSvg.svg");
-  final Widget newsIconSvg = SvgPicture.asset("assets/svgfiles/newsSvg.svg");
-  final Widget categoryIconSvg = SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
-
-
-  void myFunc() {
-print("my func");
-  }
-
 
   @override
   Widget build(BuildContext context) {
-    // Full screen width and height
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-// Height (without SafeArea)
     var padding = MediaQuery.of(context).viewPadding;
-    double height1 = height - padding.top - padding.bottom;
-
-// Height (without status bar)
-    double height2 = height - padding.top;
-
-// Height (without status and toolbar)
-    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
-
-    int safeAreaHeightInt = safeAreaHeight.toInt();
-
+    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold. Height (without status and toolbar)
 
     return Scaffold(
       backgroundColor: Color(0xff1E1E1E),
@@ -62,13 +30,6 @@ print("my func");
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: myFunc,
-            icon: settingsSvg,
-            color: Colors.white,
-          ),
-        ],
       ),
       body: Container(
         color: Colors.black26,
@@ -80,7 +41,7 @@ print("my func");
             padding: EdgeInsets.zero,
           width: width,
           height: safeAreaHeight/3,
-          child: Image.network("https://static.dw.com/image/59527518_101.jpeg", fit: BoxFit.cover,),
+          child: Image.network("https://i.dunya.com/storage/old/files/2018/9/17/427826/427826.jpg", fit: BoxFit.cover,),
       ),
             Container(
               height: safeAreaHeight/3,
@@ -143,7 +104,7 @@ print("my func");
               CategoryWidget(
                 categoryApiKeyWord: "lifestyle",
                 categoryName: "YAŞAM",
-                categorySvgUrl: "https://www.theparliamentmagazine.eu/siteimg/share/ugc-1/fullnews/news/22595/21857_original.jpg",
+                categorySvgUrl: "https://filmdaily.co/wp-content/uploads/2021/02/lifestyle-lede-1300x975.jpg",
               ),
               CategoryWidget(
                 categoryApiKeyWord: "finance",

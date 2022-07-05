@@ -1,19 +1,13 @@
-import 'package:deneme2/Widgets/animatedSubscribeButton.dart';
+
 import 'package:deneme2/main.dart';
-import 'package:deneme2/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deneme2/Widgets/BottomBar.dart';
 import 'package:deneme2/authenticationService.dart';
 import 'package:provider/provider.dart';
 
-
-
-
 void myFunc() {
   print("Hello World");
 }
-
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -24,16 +18,8 @@ class ProfileScreen extends StatelessWidget {
   // Full screen width and height
   double width = MediaQuery.of(context).size.width;
   double height = MediaQuery.of(context).size.height;
-
-// Height (without SafeArea)
-    var padding = MediaQuery.of(context).viewPadding;
-    double height1 = height - padding.top - padding.bottom;
-
-// Height (without status bar)
-    double height2 = height - padding.top;
-
-// Height (without status and toolbar)
-    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
+  var padding = MediaQuery.of(context).viewPadding;
+  double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
 
 
     return Scaffold(

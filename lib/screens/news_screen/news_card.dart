@@ -1,12 +1,10 @@
 import 'package:deneme2/screens/news_reading_screen/newsReadingScreen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NewsCard extends StatelessWidget {
-  var title, imageUrl, content, source, author;
+  var title, imageUrl, content, source, author, newsUrl;
   NewsCard(
-      {this.title,this.imageUrl, this.content, this.source, this.author}
+      {this.title,this.imageUrl, this.content, this.source, this.author, this.newsUrl}
       );
 
   @override
@@ -15,12 +13,8 @@ class NewsCard extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var padding = MediaQuery.of(context).viewPadding;
-    double height1 = height - padding.top - padding.bottom;
-    double height2 = height - padding.top;
-    double safeAreaHeight = height - padding.top - kToolbarHeight- 50; // 50 for appBar of Scaffold.
-    int safeAreaHeightInt = safeAreaHeight.toInt();
 
-
+    double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
 
     return IconButton(
       iconSize: safeAreaHeight/3,
@@ -52,12 +46,12 @@ class NewsCard extends StatelessWidget {
       ),
       ),
         onPressed: () {
-          Navigator.push(
+        Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NewsReadingScreen(
               newsTitle: title,
+              newsLink: content,
               newsImage: imageUrl,
-              newsContent: content,
               newsSource: source,
             )
             ),
