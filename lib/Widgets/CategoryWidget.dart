@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../screens/news_screen/news_screen.dart';
 
 class CategoryWidget extends StatelessWidget {
-  var categorySvgUrl,  categoryName, categoryApiKeyWord, keyword;
-  CategoryWidget({this.categorySvgUrl,  this.categoryName, this.categoryApiKeyWord, this.keyword});
+  var svgDirectory,  categoryName, categoryApiKeyWord, keyword;
+  CategoryWidget({this.svgDirectory,  this.categoryName, this.categoryApiKeyWord, this.keyword});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,29 @@ class CategoryWidget extends StatelessWidget {
     double safeAreaHeight = height - padding.top - kToolbarHeight- 50;
 
     return Container(
-      child: Stack(
+      padding: EdgeInsets.only(top: 10),
+      width: (width-10)/2,
+      height: 3*safeAreaHeight/8,
+      child: IconButton(
+        padding: EdgeInsets.zero,
+
+        onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NewsScreen(
+            categoryName: categoryName,
+            categoryUrlKeyWord: categoryApiKeyWord,
+          )
+          ),
+        );
+      },
+      icon: Stack(
         children:[
           Container(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(top: 0),
             width: (width-10)/2,
-            height: (3*safeAreaHeight/4)/2,
-            child: Image.network(categorySvgUrl, fit: BoxFit.cover,),
+            height: 3*safeAreaHeight/8,
+            child: Image.asset(svgDirectory, fit: BoxFit.cover,),
           ),
           Container(
             height: 3*safeAreaHeight/8,
@@ -36,11 +52,11 @@ class CategoryWidget extends StatelessWidget {
             ),
           ),
           Container(
-            height: (3*safeAreaHeight/4)/2,
-            width: (width/2)-10,
+            height: 3*safeAreaHeight/8,
+            width: (width/2),
             alignment: Alignment.bottomLeft,
-            padding: const EdgeInsets.only(left: 8, top: 10),
-            child: TextButton(
+            padding: const EdgeInsets.only(left: 8, bottom: 10),
+
                 child: Text(categoryName,
                   style: TextStyle(
                     color: Colors.white,
@@ -49,20 +65,10 @@ class CategoryWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NewsScreen(
-                      categoryName: categoryName,
-                      categoryUrlKeyWord: categoryApiKeyWord,
-                    )
-                    ),
-                  );
-                },
-            ),
           ),
         ],
       ),
+    ),
     );
   }
 }

@@ -50,12 +50,7 @@ class _NewsState extends State<NewsScreen> {
         backgroundColor: const Color(0xFFFF4242),
         leading: IconButton(
           icon: arrowBackSvg,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CategoryScreen()),
-              );
-            }
+          onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
           widget.categoryName,

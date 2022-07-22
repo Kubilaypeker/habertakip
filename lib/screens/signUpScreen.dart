@@ -1,12 +1,23 @@
 import 'package:deneme2/screens/loginScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-class signUpScreen extends StatelessWidget {
+class signUpScreen extends StatefulWidget {
   const signUpScreen({Key? key}) : super(key: key);
+
+  _signUpScreenState createState() => _signUpScreenState();
+}
+
+class _signUpScreenState extends State<signUpScreen> {
+
+  TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _userNameTextController = TextEditingController();
+
   void myFunc() {
     print("Hello World");
   }
@@ -110,12 +121,13 @@ class signUpScreen extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child: const TextField(
+          child: TextField(
+            controller: _userNameTextController,
             style: TextStyle(color: Colors.white),
             obscureText: false,
             decoration: InputDecoration(
-              labelText: "Örnek",
-              labelStyle: TextStyle(
+              hintText: "Örnek",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 12,
                 ),
@@ -136,12 +148,13 @@ class signUpScreen extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child:   const TextField(
+          child: TextField(
+            controller: _emailTextController,
             obscureText: false,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              labelText: "Örnek@gmail.com",
-              labelStyle: TextStyle(
+              hintText: "Örnek@gmail.com",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
                 ),
@@ -162,11 +175,12 @@ class signUpScreen extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child: const TextField(
+          child: TextField(
+            controller: _passwordTextController,
             obscureText: true,
             decoration: InputDecoration(
-              labelText: "******",
-              labelStyle: TextStyle(
+              hintText: "******",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
                 ),
@@ -188,11 +202,11 @@ class signUpScreen extends StatelessWidget {
         
         Container(
           padding: const EdgeInsets.only(left: 20, top: 0),
-          child: const TextField(
+          child: TextField(
             obscureText: true,
             decoration: InputDecoration(
-              labelText: "******",
-              labelStyle: TextStyle(
+              hintText: "******",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
                 ),
@@ -209,14 +223,23 @@ class signUpScreen extends StatelessWidget {
             width: 3*width/4,
 
             child: TextButton(
-            
             child: const Text("KAYIT OL",
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Allerta',
               fontSize: 16,
-            ),),
-            onPressed: myFunc,
+            ),
+            ),
+            onPressed: () {
+              FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {print("Hesabınız Oluşturuldu!");
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => loginScreen()));
+              }).onError((error, stackTrace) {
+                print("Error ${error.toString()}"
+                );
+              }
+              );
+            },
             style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFFF4242),
                       primary: const Color.fromARGB(255, 255, 255, 255),

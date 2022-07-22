@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
 
-  var UserName = "MuRKuT";
+
   // Full screen width and height
   double width = MediaQuery.of(context).size.width;
   double height = MediaQuery.of(context).size.height;
@@ -25,56 +25,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 0),
 
-            height: 2*width/5,
-
-          child: CircleAvatar(
-            radius: width/5,
-
-            child: ClipRRect(
-              child: Image.network('https://image.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg'),
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-          ),
-
-
-            ),
-
-          Container(
-            padding: EdgeInsets.only(top: 10, bottom: 10),
-            alignment: Alignment.center,
-           child: Text(
-             UserName,
-             style: TextStyle(
-               fontSize: 18,
-               color: Color(0xffA8A7A7),
-               fontWeight: FontWeight.bold
-             ),
-           ),
-          ),
-          Container(
-            width: width/3,
-            alignment: Alignment.center,
-            height: safeAreaHeight/11,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Color(0xffF3474F),
-            ),
-            child: const TextButton(
-                child: Text("Profili Düzenle",
-                  style: TextStyle(
-                    fontFamily: "Allerta",
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              onPressed: myFunc,
-              ),
-
-          ),
           SizedBox(
             width: 2*width/3,
             height: safeAreaHeight/11,
@@ -93,7 +44,8 @@ class ProfileScreen extends StatelessWidget {
             );
           },
               child: Text("Çıkış Yap")
-          ),)
+          ),
+          )
     )
         ],
       ),

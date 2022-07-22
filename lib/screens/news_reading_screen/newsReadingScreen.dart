@@ -29,7 +29,7 @@ NewsReadingScreen(
       ),
       ),
       body: WebView(
-          initialUrl: newsLink,
+        initialUrl: newsLink,
       ),
       bottomNavigationBar: BottomBar(),
     );

@@ -1,3 +1,4 @@
+import 'package:deneme2/screens/forgotPassword.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:deneme2/authenticationService.dart';
@@ -148,8 +149,8 @@ class loginScreen extends StatefulWidget {
             controller: email,
             obscureText: false,
             decoration: InputDecoration(
-              labelText: "example@gmail.com",
-              labelStyle: TextStyle(
+              hintText: "example@gmail.com",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
                 ),
@@ -175,8 +176,8 @@ class loginScreen extends StatefulWidget {
             style: TextStyle(color: Colors.white),
             obscureText: true,
             decoration: InputDecoration(
-              labelText: "******",
-              labelStyle: TextStyle(
+              hintText: "******",
+              hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
                 ),
@@ -222,7 +223,12 @@ class loginScreen extends StatefulWidget {
               fontFamily: 'Allerta',
               fontSize: 12,
             ),),
-            onPressed: myFunc,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => forgotPassword()),
+              );
+            },
             style: TextButton.styleFrom(
                       primary: const Color.fromARGB(255, 255, 255, 255),
                       textStyle: const TextStyle(fontFamily: 'Allerta',),),

@@ -18,10 +18,8 @@ class NewsCard extends StatelessWidget {
 
     return IconButton(
       iconSize: safeAreaHeight/3,
-      icon: Card(
-        margin: EdgeInsets.all(0),
+      icon: Container(
         color: Color(0xff282727),
-        elevation: 6,
         child: ListView(
         physics: NeverScrollableScrollPhysics(),
         children: <Widget>[
