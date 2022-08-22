@@ -13,11 +13,12 @@ class BottomBar extends StatelessWidget {
   final Widget categoryIconSvg = SvgPicture.asset("assets/svgfiles/categoryIconSvg.svg");
 
     return SizedBox(
-  height: 78,
   child: BottomNavigationBar(
-  backgroundColor: const Color(0xff1E1E1E),
-  selectedItemColor: const Color(0xffFF4242),
-  items: [
+      showSelectedLabels: false,
+    showUnselectedLabels: false,
+    backgroundColor: const Color(0xff1E1E1E),
+    selectedItemColor: const Color(0xffFF4242),
+    items: [
   BottomNavigationBarItem(
   icon: Container(
   child: IconButton(icon: categoryIconSvg,

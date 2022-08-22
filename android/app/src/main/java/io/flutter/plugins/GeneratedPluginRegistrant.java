@@ -26,6 +26,11 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin firebase_core, io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin", e);
     }
     try {
+      flutterEngine.getPlugins().add(new app.meedu.flutter_facebook_auth.FlutterFacebookAuthPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_facebook_auth, app.meedu.flutter_facebook_auth.FlutterFacebookAuthPlugin", e);
+    }
+    try {
       flutterEngine.getPlugins().add(new io.flutter.plugins.googlesignin.GoogleSignInPlugin());
     } catch(Exception e) {
       Log.e(TAG, "Error registering plugin google_sign_in_android, io.flutter.plugins.googlesignin.GoogleSignInPlugin", e);
@@ -34,6 +39,11 @@ public final class GeneratedPluginRegistrant {
       flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
     } catch(Exception e) {
       Log.e(TAG, "Error registering plugin path_provider_android, io.flutter.plugins.pathprovider.PathProviderPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.maru.twitter_login.TwitterLoginPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin twitter_login, com.maru.twitter_login.TwitterLoginPlugin", e);
     }
     try {
       flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());

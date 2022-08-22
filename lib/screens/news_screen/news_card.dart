@@ -2,9 +2,9 @@ import 'package:deneme2/screens/news_reading_screen/newsReadingScreen.dart';
 import 'package:flutter/material.dart';
 
 class NewsCard extends StatelessWidget {
-  var title, imageUrl, content, source, author, newsUrl;
+  var title, imageUrl, content, newsDate, newsPreview;
   NewsCard(
-      {this.title,this.imageUrl, this.content, this.source, this.author, this.newsUrl}
+      {this.title, this.imageUrl, this.content,  this.newsDate, this.newsPreview}
       );
 
   @override
@@ -35,8 +35,8 @@ class NewsCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white60,
-                fontSize: 14,
-                fontFamily: "Allerta",
+                fontSize: 20,
+                fontFamily: "Oswald",
               ),
             ),
           ),
@@ -47,10 +47,11 @@ class NewsCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NewsReadingScreen(
+              newsPreview: newsPreview,
+              newsDate: newsDate,
               newsTitle: title,
-              newsLink: content,
+              newsContent: content,
               newsImage: imageUrl,
-              newsSource: source,
             )
             ),
           );

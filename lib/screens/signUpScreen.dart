@@ -1,9 +1,13 @@
+import 'package:deneme2/main.dart';
 import 'package:deneme2/screens/loginScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import '../signInWithGoogle.dart';
 
 
 class signUpScreen extends StatefulWidget {
@@ -13,6 +17,7 @@ class signUpScreen extends StatefulWidget {
 }
 
 class _signUpScreenState extends State<signUpScreen> {
+  Map? _userData;
 
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
@@ -178,6 +183,7 @@ class _signUpScreenState extends State<signUpScreen> {
           child: TextField(
             controller: _passwordTextController,
             obscureText: true,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               hintText: "******",
               hintStyle: TextStyle(
@@ -204,6 +210,7 @@ class _signUpScreenState extends State<signUpScreen> {
           padding: const EdgeInsets.only(left: 20, top: 0),
           child: TextField(
             obscureText: true,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               hintText: "******",
               hintStyle: TextStyle(
@@ -216,7 +223,7 @@ class _signUpScreenState extends State<signUpScreen> {
         
         
         Container( 
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20,bottom: 10),
           alignment: Alignment.center,
           child: SizedBox(
             height: safeAreaHeight/11,
@@ -233,12 +240,13 @@ class _signUpScreenState extends State<signUpScreen> {
             onPressed: () {
               FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {print("Hesabınız Oluşturuldu!");
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => loginScreen()));
+                  MaterialPageRoute(builder: (context) => AuthenticationWrapper()));
               }).onError((error, stackTrace) {
                 print("Error ${error.toString()}"
                 );
               }
               );
+
             },
             style: TextButton.styleFrom(
                       backgroundColor: const Color(0xFFFF4242),
@@ -247,61 +255,63 @@ class _signUpScreenState extends State<signUpScreen> {
           ),
         ),
         ),
-        
-        Container( 
-          padding: EdgeInsets.only(top: safeAreaHeight/30),
-          alignment: Alignment.center,
-          child: const Text("SOSYAL MEDYA İLE GİRİŞ YAP",
-            style: TextStyle(
-              color: Color(0xFFFF4242),
-              fontFamily: 'Allerta',
-              fontSize: 10,
-              
-            ),
-            ),
-        ),
-        Container(
-          alignment: Alignment.center,
-          
-            child: Wrap(              
-              spacing: 15,
-            children: <Widget>[
-              
-            Expanded(
-              child: SizedBox(
-                 child: IconButton(icon: googleSvg,
-                 onPressed: myFunc,
-                 ),
 
-
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: const Text("SOSYAL MEDYA İLE GİRİŞ YAP",
+                style: TextStyle(
+                  color: Color(0xFFFF4242),
+                  fontFamily: 'Allerta',
+                  fontSize: 10,
+                ),
+              ),
             ),
+            Container(
+              alignment: Alignment.center,
+              child: Wrap(
+                  spacing: 15,
+                  children: <Widget>[
+                    Expanded(
+                      child: SizedBox(
+                        child: IconButton(icon: googleSvg,
+                          onPressed: () {
+                            final provider =
+                            Provider.of<GoogleSignInProvider>(context, listen: false);
+                            provider.googleLogin();
+                          },
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        child: IconButton(icon: facebookSvg,
+                            onPressed: () async {
+                              final result = await FacebookAuth.i.login(
+                                  permissions: ["public_profile", "email"]
+                              );
+                              if (result.status == LoginStatus.success) {
+                                final userData = await FacebookAuth.i.getUserData(
+                                  fields: "email,name",
+                                );
+                                setState(() {
+                                  _userData = userData;
+                                }
+                                );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => navigator(_userData)),
+                                );
+                              }
+                            }
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
             ),
-            Expanded(
-              child: SizedBox(
-                 child: IconButton(icon: facebookSvg,
-                 onPressed: myFunc,
-                 ),
-
-
-            ),
-            ),
-            Expanded(
-              child: SizedBox(
-                 child: IconButton(icon: twitterSvg,
-                 onPressed: myFunc,
-                 ),
-
-
-            ),
-            ),
-          ]
-          ),
-        ),
-        
         ],
-        ), 
-    
-      
+        ),
       ),
     );
   }

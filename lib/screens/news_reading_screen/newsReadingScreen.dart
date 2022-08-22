@@ -5,11 +5,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 
 class NewsReadingScreen extends StatelessWidget {
-  var newsLink,newsTitle, newsContent, newsSource,categoryName, newsImage;
+  var newsTitle, newsContent,  newsDate ,categoryName, newsImage, newsPreview;
   final Widget arrowBackSvg = SvgPicture.asset("assets/svgfiles/arrowback.svg");
 
 NewsReadingScreen(
-  {this.newsLink,this.newsTitle,this.newsContent, this.newsSource, this.newsImage}
+  {this.newsTitle,this.newsContent, this.newsDate , this.newsImage, this.newsPreview}
     );
 
   @override
@@ -28,9 +28,64 @@ NewsReadingScreen(
         icon: arrowBackSvg,
       ),
       ),
-      body: WebView(
-        initialUrl: newsLink,
-      ),
+      body: ListView(
+          children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(top: 10,left: 10,right: 10, bottom: 5),
+          child: Text(
+            newsTitle,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Oswald",
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 4,horizontal: 10),
+          child: Text(
+            newsDate,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.white60,
+              fontFamily: "Oswald"
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.only(top: 5, bottom: 15),
+          child: Image.network(
+            newsImage,
+            fit: BoxFit.fill,
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Text(
+            newsPreview,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                fontFamily: "RobotoSlab"
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            newsContent,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              //fontWeight: FontWeight.bold,
+              fontFamily: "RobotoSlab"
+            ),
+          ),
+        ),
+      ]
+    ),
       bottomNavigationBar: BottomBar(),
     );
   }

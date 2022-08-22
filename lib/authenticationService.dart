@@ -11,6 +11,7 @@ class AuthenticationService {
     await _firebaseAuth.signOut();
   }
 
+
   Future<String?> signIn({required String email, required String password}) async{
     try {
       await _firebaseAuth.signInWithEmailAndPassword( email: email, password: password);
@@ -28,4 +29,8 @@ class AuthenticationService {
       return e.message;
     }
   }
+
+
+
+
 }

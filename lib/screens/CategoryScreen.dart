@@ -44,7 +44,7 @@ class CategoryScreen extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => NewsScreen(
         categoryName: "GÜNDEMDEKİLER",
-        categoryUrlKeyWord: "breakingNews",
+        categoryUrlKeyWord: "latest",
         )
         ),
         );
@@ -91,7 +91,22 @@ class CategoryScreen extends StatelessWidget {
             spacing: 10,
             children: <Widget>[
               CategoryWidget(
-                categoryApiKeyWord: "technology",
+                categoryApiKeyWord: "politic",
+                categoryName: "POLİTİKA",
+                svgDirectory: "assets/jpgfiles/politicNews.jpg",
+              ),
+              CategoryWidget(
+                categoryApiKeyWord: "economy",
+                categoryName: "EKONOMİ",
+                svgDirectory: "assets/jpgfiles/finance.jpg",
+              )
+            ],
+          ),
+          Wrap(
+            spacing: 10,
+            children: <Widget>[
+              CategoryWidget(
+                categoryApiKeyWord: "tech",
                 categoryName: "TEKNOLOJİ",
               svgDirectory: "assets/jpgfiles/tech.jpg",
               ),
@@ -106,14 +121,14 @@ class CategoryScreen extends StatelessWidget {
             spacing: 10,
             children: <Widget>[
               CategoryWidget(
-                categoryApiKeyWord: "lifestyle",
-                categoryName: "YAŞAM",
-                svgDirectory: "assets/jpgfiles/lifestyle.jpg",
+                categoryApiKeyWord: "world",
+                categoryName: "DÜNYA",
+                svgDirectory: "assets/jpgfiles/worldNews.jpg",
               ),
               CategoryWidget(
-                categoryApiKeyWord: "finance",
-                categoryName: "BORSA",
-                svgDirectory: "assets/jpgfiles/finance.jpg",
+                categoryApiKeyWord: "magazine",
+                categoryName: "MAGAZİN",
+                svgDirectory: "assets/jpgfiles/magazineNews.jpg",
               ),
             ],
           ),

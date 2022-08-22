@@ -1,4 +1,6 @@
 import 'package:deneme2/screens/forgotPassword.dart';
+import 'package:deneme2/signInWithGoogle.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:deneme2/authenticationService.dart';
@@ -7,6 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import 'CategoryScreen.dart';
+
+Widget navigator(var userData)  {
+  if (userData != null) {
+    return CategoryScreen();
+  }
+  return loginScreen();
+
+
+}
 
 class loginScreen extends StatefulWidget {
   const loginScreen({Key? key}) : super(key: key);
@@ -16,6 +28,8 @@ class loginScreen extends StatefulWidget {
 }
 
   class _loginScreenState extends State<loginScreen> {
+
+    Map? _userData;
 
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -149,7 +163,7 @@ class loginScreen extends StatefulWidget {
             controller: email,
             obscureText: false,
             decoration: InputDecoration(
-              hintText: "example@gmail.com",
+              hintText: "örnek@gmail.com",
               hintStyle: TextStyle(
                 color: Color(0xffA1A2A4),
                 fontSize: 14,
@@ -253,24 +267,38 @@ class loginScreen extends StatefulWidget {
             Expanded(
               child: SizedBox(
                  child: IconButton(icon: googleSvg,
-                 onPressed: myFunc
+                 onPressed: () {
+                   final provider =
+                       Provider.of<GoogleSignInProvider>(context, listen: false);
+                   provider.googleLogin();
+                   },
                  ),
               ),
             ),
             Expanded(
               child: SizedBox(
                  child: IconButton(icon: facebookSvg,
-                 onPressed: myFunc,
+                 onPressed: () async {
+                   final result = await FacebookAuth.i.login(
+                       permissions: ["public_profile", "email"]
+                   );
+                   if (result.status == LoginStatus.success) {
+                     final userData = await FacebookAuth.i.getUserData(
+                       fields: "email,name",
+                     );
+                     setState(() {
+                       _userData = userData;
+                     }
+                     );
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => navigator(_userData)),
+                     );
+                   }
+                 }
                  ),
               ),
             ),
-            Expanded(
-              child: SizedBox(
-                 child: IconButton(icon: twitterSvg,
-                 onPressed: myFunc,
-                 ),
-                ),
-               ),
               ]
              ),
             ),

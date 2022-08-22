@@ -25,14 +25,14 @@ class _NewsState extends State<NewsScreen> {
 
   String getApiUrl(String category) {
   String url = sprintf(
-        "https://news-summary-service-prod.bundlenews.co/newsSummary/summary/%s?countryId=228&limit=20", // used Bundle News API to develop this application.
+        "https://habertakipapi.herokuapp.com/news/api/%s?key=KfmH9cDCXnYXhXk7ne6MF6XtgJ7Ea7XA2", // used Bundle News API to develop this application.
         [category]);
     return url;
   }
 
   Future<List<dynamic>> getData() async {
     var result = await http.get(Uri.parse(getApiUrl(widget.categoryUrlKeyWord)));
-    return jsonDecode(result.body)['newsSummaryList'];
+    return jsonDecode(result.body)['data'];
   }
 
   @override
@@ -70,11 +70,11 @@ class _NewsState extends State<NewsScreen> {
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return NewsCard(
-                  //content: snapshot.data[index]['content'],
-                  imageUrl: snapshot.data[index]['imageLink'],
-                  title: snapshot.data[index]['title'],
-                  source: snapshot.data[index]['newsChannelName'],
-                  content: snapshot.data[index]['link'],
+                  newsPreview: snapshot.data[index]['news_preview_content'],
+                  newsDate: snapshot.data[index]['news_date'],
+                  imageUrl: snapshot.data[index]['news_photo'],
+                  title: snapshot.data[index]['news_title'],
+                  content: snapshot.data[index]['news_content'],
                 );
               },
             );

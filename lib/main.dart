@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:deneme2/authenticationService.dart';
 import 'package:deneme2/screens/CategoryScreen.dart';
 import 'package:deneme2/screens/loginScreen.dart';
+import 'package:deneme2/signInWithGoogle.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +34,7 @@ class HaberApp extends StatelessWidget {
       ),
       StreamProvider(create: (context) => context.read<AuthenticationService>().authStateChanges, initialData: null,
       ),
+        Provider<GoogleSignInProvider>(create:(_) => GoogleSignInProvider()),
     ],
       child: MaterialApp(
       debugShowCheckedModeBanner: false,
